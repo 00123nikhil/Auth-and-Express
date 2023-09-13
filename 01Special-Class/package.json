@@ -1,0 +1,16 @@
+{
+  "name": "01special-class",
+  "version": "1.0.0",
+  "description": "24th Special Class",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "author": "Nikhil Borse",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.1"
+  }
+}
