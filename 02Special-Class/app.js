@@ -3,14 +3,21 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const cors = require("cors");
 
 const connectDB = require("./config/db.js");
 
-// init connection to db
-connectDB()
+//Express middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("Hello world!");
-});
+app.use(cors());
+
+// init connection to db
+connectDB();
+
+// importing routes here
+const userRoutes = require("./routes/userRoutes.js");
+app.use("/", userRoutes);
 
 module.exports = app;
