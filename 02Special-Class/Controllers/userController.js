@@ -53,6 +53,38 @@ exports.getUsers = async (req, res) => {
   }
 };
 
+exports.editUser = async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(req.params.id, req.body);
+    res.status(200).json({
+      success: true,
+      message: "user updated successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await user.findByIdAndDelete(userId);
+    res.status(200).json({
+      success: true,
+      message: "user deleted successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).jso({
+      success: false,
+      message: "Error occurs",
+    });
+  }
+};
 /* 
 dekho jo controller hai uske pass hote hai function wo directly app.js me ja sakte hai. but we not use like this.
 
